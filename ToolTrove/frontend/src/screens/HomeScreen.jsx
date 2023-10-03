@@ -12,15 +12,14 @@ const HomeScreen = () => {
                 <Col key={product._id} sm={6} md={4} lg={3} xl={2}>
                     <Product productData={product} />
                 </Col>
-                
 
-               
-                
-                
             ))}
         </Row>
     </>
+
+    
   );
 };
+
 
 export default HomeScreen
