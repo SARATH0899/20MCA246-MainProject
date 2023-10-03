@@ -23,7 +23,7 @@ const products = [
     price: 2300,
     countInStock: 7,
     rating: 4.0,
-    numReviews: 8,
+    numReviews: 10,
   },
   {
     _id: '3',
@@ -49,7 +49,7 @@ const products = [
     price: 1499,
     countInStock: 11,
     rating: 5,
-    numReviews: 12,
+    numReviews: 25,
   },
   {
     _id: '5',
@@ -75,7 +75,7 @@ const products = [
     price: 4599,
     countInStock: 4,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 14,
   },
   {
     _id: '7',
@@ -101,7 +101,7 @@ const products = [
     price: 1800,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 18,
   },
   {
     _id: '9',
@@ -127,7 +127,7 @@ const products = [
     price: 6999,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 12,
+    numReviews: 11,
   },
   {
     _id: '11',
@@ -140,7 +140,7 @@ const products = [
     price: 189,
     countInStock: 10,
     rating: 3.5,
-    numReviews: 12,
+    numReviews: 20,
   },
   {
     _id: '12',
@@ -153,7 +153,7 @@ const products = [
     price: 1999,
     countInStock: 7,
     rating: 4.0,
-    numReviews: 8,
+    numReviews: 28,
   },
   {
     _id: '13',
@@ -192,7 +192,7 @@ const products = [
     price: 1450,
     countInStock: 7,
     rating: 3.9,
-    numReviews: 10,
+    numReviews: 24,
   },
   {
     _id: '16',
@@ -231,7 +231,7 @@ const products = [
     price: 499,
     countInStock: 10,
     rating: 3.8,
-    numReviews: 8,
+    numReviews: 17,
   },{
     _id: '19',
     name: 'High Pressure pump',
@@ -256,7 +256,7 @@ const products = [
     price: 280,
     countInStock: 10,
     rating: 3.9,
-    numReviews: 8,
+    numReviews: 26,
   },
   {
     _id: '21',
@@ -321,7 +321,7 @@ const products = [
     price: 5300,
     countInStock: 7,
     rating: 4.6,
-    numReviews: 6,
+    numReviews: 36,
   },
 ]
 
