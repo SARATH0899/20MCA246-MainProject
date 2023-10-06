@@ -51,3 +51,11 @@ table th {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.in-stock {
+  color: green;
+}
+
+.out-of-stock {
+  color: red;
+}
