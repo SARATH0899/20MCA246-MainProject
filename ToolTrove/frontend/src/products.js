@@ -41,7 +41,7 @@ const products = [
   {
     _id: '4',
     name: 'Mini-electric Battery powered driller',
-    image: '/images/battery driller.jpg',
+    image: '/images/battery_driller.jpg',
     description:
       'A mini-electric Driller machine with 14.4V battery power with adjustable speed',
     brand: 'Foxin',
@@ -54,7 +54,7 @@ const products = [
   {
     _id: '5',
     name: 'Rotary Hammer Driller',
-    image: '/images/rotary hammer.jpg',
+    image: '/images/rotary_hammer.jpg',
     description:
       'A super quality hammer cum driller with 220_240V and with high speed drill with additional 2 hammer bits',
     brand: 'DrillBill',
@@ -80,7 +80,7 @@ const products = [
   {
     _id: '7',
     name: 'Wood Sander with Adjustable plates',
-    image: '/images/sander 2.jpg',
+    image: '/images/sander_2.jpg',
     description:
       'A Premium Quality Package with Adjustable plates with 3 sanding plates with 800W and 240V',
     brand: 'DeWalt',
@@ -93,7 +93,7 @@ const products = [
   {
     _id: '8',
     name: 'Wood Sander',
-    image: '/images/sander 3.jpg',
+    image: '/images/sander_3.jpg',
     description:
       'A Premium Quality Package with smooth and rough plates for dual purpose',
     brand: 'iBell',
