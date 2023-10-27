@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Wood Polishing Machine',
     image: '/images/sander.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Wood Cutting Machine',
     image: '/images/cutter.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '3',
     name: 'Battery powered mini-electric Driller',
     image: '/images/driller.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Mini-electric Battery powered driller',
     image: '/images/battery_driller.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 25,
   },
   {
-    _id: '5',
     name: 'Rotary Hammer Driller',
     image: '/images/rotary_hammer.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: '11Kg Hammer Guilty Machine',
     image: '/images/guilty.jpg',
     description:
@@ -78,7 +72,6 @@ const products = [
     numReviews: 14,
   },
   {
-    _id: '7',
     name: 'Wood Sander with Adjustable plates',
     image: '/images/sander_2.jpg',
     description:
@@ -91,7 +84,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '8',
     name: 'Wood Sander',
     image: '/images/sander_3.jpg',
     description:
@@ -104,7 +96,6 @@ const products = [
     numReviews: 18,
   },
   {
-    _id: '9',
     name: 'Car Washing Pressure pump',
     image: '/images/washer.jpg',
     description:
@@ -117,7 +108,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '10',
     name: 'Chain Saw Machine Petrol',
     image: '/images/chain_saw.jpg',
     description:
@@ -130,7 +120,6 @@ const products = [
     numReviews: 11,
   },
   {
-    _id: '11',
     name: 'Bolt Cutter',
     image: '/images/bolt_cutter.jpg',
     description:
@@ -143,7 +132,6 @@ const products = [
     numReviews: 20,
   },
   {
-    _id: '12',
     name: 'Mini Hammer cum Driller',
     image: '/images/bphd.jpg',
     description:
@@ -156,7 +144,6 @@ const products = [
     numReviews: 28,
   },
   {
-    _id: '13',
     name: 'Driller Set',
     image: '/images/driller_set.jpg',
     description:
@@ -169,7 +156,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '14',
     name: 'Hand Pyler',
     image: '/images/ele_t2.jpg',
     description:
@@ -182,7 +168,6 @@ const products = [
     numReviews: 20,
   },
   {
-    _id: '15',
     name: 'Stem Cutter for Gardenings',
     image: '/images/gardening_tool.jpg',
     description:
@@ -195,7 +180,6 @@ const products = [
     numReviews: 24,
   },
   {
-    _id: '16',
     name: 'Power Generator',
     image: '/images/generator.jpg',
     description:
@@ -208,7 +192,6 @@ const products = [
     numReviews: 36,
   },
   {
-    _id: '17',
     name: 'Hammer',
     image: '/images/hammer.jpg',
     description:
@@ -221,7 +204,6 @@ const products = [
     numReviews: 57,
   },
   {
-    _id: '18',
     name: 'Hand Equipment Set',
     image: '/images/hand_tool.jpg',
     description:
@@ -233,7 +215,6 @@ const products = [
     rating: 3.8,
     numReviews: 17,
   },{
-    _id: '19',
     name: 'High Pressure pump',
     image: '/images/pressure_washer.jpg',
     description:
@@ -246,7 +227,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '20',
     name: 'Hand Spanners',
     image: '/images/ht2.jpg',
     description:
@@ -259,7 +239,6 @@ const products = [
     numReviews: 26,
   },
   {
-    _id: '21',
     name: 'Mechanical Set',
     image: '/images/ht3.jpg',
     description:
@@ -272,7 +251,6 @@ const products = [
     numReviews: 18,
   },
   {
-    _id: '22',
     name: 'Jigsaw Machine',
     image: '/images/jigsaw.jpg',
     description:
@@ -285,7 +263,6 @@ const products = [
     numReviews: 13,
   },
   {
-    _id: '23',
     name: 'Putty Mixer',
     image: '/images/putty_mixer.jpg',
     description:
@@ -298,7 +275,6 @@ const products = [
     numReviews: 16,
   },
   {
-    _id: '24',
     name: 'Mini-electric Battery powered Hammer',
     image: '/images/rh2.jpg',
     description:
@@ -311,7 +287,6 @@ const products = [
     numReviews: 13,
   },
   {
-    _id: '25',
     name: 'Weilding Plant',
     image: '/images/weilding_plant.jpg',
     description:
