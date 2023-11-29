@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
 import Message from '../components/Message';
 import { useGetproductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice';
 import { addToCart } from '../slices/cartSlice';
@@ -74,6 +75,7 @@ const ProductScreen = () => {
         </Message>
         ) : (
             <>
+            <Meta title={product.name} description={product.description} />
             <Row>
             <Col md={5}>
                 <Image src={product.image} alt={product.name} fluid />

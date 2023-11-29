@@ -6,6 +6,8 @@ import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
+import Meta from '../components/Meta';
+import ProductCarousel from '../components/ProductCarousel';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 
@@ -16,7 +18,9 @@ const HomeScreen = () => {
 
   return (
     <>
-     {keyword && (
+     {!keyword ? (
+      <ProductCarousel />
+     ) : (
         <Link to='/' className='btn btn-light mb-4'>
           Go Back
         </Link>
@@ -29,6 +33,7 @@ const HomeScreen = () => {
         </Message>
         ) : (
         <>
+        <Meta title="Welcome to Tools Hub" />
         <h1>Latest Products</h1>
         <Row>
             {data.products.map((product) =>(
