@@ -82,6 +82,7 @@ const ProfileScreen = () => {
               type='password'
               placeholder='Enter password'
               value={password}
+              id = "password"
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
@@ -92,11 +93,12 @@ const ProfileScreen = () => {
               type='password'
               placeholder='Confirm password'
               value={confirmPassword}
+              id = "confirmPassword"
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
-          <Button type='submit' variant='primary'>
+          <Button type='submit' variant='primary' id="testid">
             Update
           </Button>
           {loadingUpdateProfile && <Loader />}

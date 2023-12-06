@@ -5,7 +5,6 @@ import {
   Col,
   ListGroup,
   Image,
-  Form,
   Button,
   Card,
 } from 'react-bootstrap';
@@ -53,19 +52,23 @@ const CartScreen = () => {
                   </Col>
                   <Col md={2}>₹{item.price}</Col>
                   <Col md={2}>
-                    <Form.Control
-                      as='select'
-                      value={item.qty}
-                      onChange={(e) =>
-                        addToCartHandler(item, Number(e.target.value))
-                      }
+                    <Button
+                      type='button'
+                      variant='light'
+                      onClick={() => addToCartHandler(item, item.qty - 1)}
+                      disabled={item.qty === 1}
                     >
-                      {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </Form.Control>
+                      -
+                    </Button>
+                    <span style={{ margin: '0 5px' }}>{item.qty}</span>
+                    <Button
+                      type='button'
+                      variant='light'
+                      onClick={() => addToCartHandler(item, item.qty + 1)}
+                      disabled={item.qty === item.countInStock}
+                    >
+                      +
+                    </Button>
                   </Col>
                   <Col md={2}>
                     <Button

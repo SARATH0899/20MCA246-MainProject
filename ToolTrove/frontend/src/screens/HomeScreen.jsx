@@ -10,7 +10,6 @@ import Meta from '../components/Meta';
 import ProductCarousel from '../components/ProductCarousel';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
-
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
 
@@ -18,42 +17,39 @@ const HomeScreen = () => {
 
   return (
     <>
-     {!keyword ? (
-      <ProductCarousel />
-     ) : (
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
         <Link to='/' className='btn btn-light mb-4'>
           Go Back
         </Link>
       )}
-      { isLoading ? (
+      {isLoading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>
-          { error?.data?.message || error.error }
+          {error?.data?.message || error.error}
         </Message>
-        ) : (
+      ) : (
         <>
-        <Meta title="Welcome to Tools Hub" />
-        <h1>Latest Products</h1>
-        <Row>
-            {data.products.map((product) =>(
-                <Col key={product._id} sm={6} md={4} lg={3} xl={2}>
-                    <Product productData={product} />
-                </Col>
-
+          <Meta title="Welcome to Tools Hub" />
+          <h1>Latest Products</h1>
+          <Row>
+            {data.products.map((product) => (
+              <Col key={product._id} sm={6} md={4} lg={3} xl={3}>
+                <Product productData={product} />
+              </Col>
             ))}
-        </Row>
-        <Paginate
+          </Row>
+          <Paginate
             pages={data.pages}
-            page={data.page} 
-            keyword ={keyword ? keyword : '' } />
-      </>
-      )}  
+            page={data.page}
+            keyword={keyword ? keyword : ''}
+          />
+        </>
+      )}
     </>
-
-    
   );
 };
 
-
-export default HomeScreen
+export default HomeScreen;

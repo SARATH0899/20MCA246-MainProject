@@ -52,6 +52,7 @@ const LoginScreen = () => {
             type='email'
             placeholder='Enter email'
             value={email}
+            name="email"
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -62,11 +63,16 @@ const LoginScreen = () => {
             type='password'
             placeholder='Enter password'
             value={password}
+            name="password"
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Button disabled={ isLoading } type='submit' variant='primary' className='mt-2'>
+        <div className="d-flex justify-content-end mt-2 mt-2">
+          <Link to="/forgot_Password">Forgot Password?</Link>
+        </div>
+
+        <Button disabled={ isLoading } type='submit' id="testid" variant='primary' className='mt-2'>
           Sign In
         </Button>
 
