@@ -97,6 +97,7 @@ const ProductEditScreen = () => {
                 type='text'
                 placeholder='Enter name'
                 value={name}
+                id="name"
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -107,6 +108,7 @@ const ProductEditScreen = () => {
                 type='number'
                 placeholder='Enter price'
                 value={price}
+                name="price"
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -133,6 +135,7 @@ const ProductEditScreen = () => {
                 type='text'
                 placeholder='Enter brand'
                 value={brand}
+                name="brand"
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -143,6 +146,7 @@ const ProductEditScreen = () => {
                 type='number'
                 placeholder='Enter countInStock'
                 value={countInStock}
+                name="cis"
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -153,6 +157,7 @@ const ProductEditScreen = () => {
                 type='text'
                 placeholder='Enter category'
                 value={category}
+                name="category"
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -163,6 +168,7 @@ const ProductEditScreen = () => {
                 type='text'
                 placeholder='Enter description'
                 value={description}
+                name="description"
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -171,6 +177,7 @@ const ProductEditScreen = () => {
               type='submit'
               variant='primary'
               classname='my-2'
+              id="btn"
               style={{ marginTop: '1rem' }}
             >
               Update

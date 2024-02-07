@@ -59,6 +59,7 @@ const RegisterScreen = () => {
             type='name'
             placeholder='Enter name'
             value={name}
+            name="name"
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -69,6 +70,7 @@ const RegisterScreen = () => {
             type='email'
             placeholder='Enter email'
             value={email}
+            name="em"
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -79,6 +81,7 @@ const RegisterScreen = () => {
             type='text'
             placeholder='Enter Mobile No'
             value={mobile}
+            name="mobile"
             onChange={(e) => setMobile(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -89,6 +92,7 @@ const RegisterScreen = () => {
             type='password'
             placeholder='Enter password'
             value={password}
+            name="pw"
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -99,11 +103,12 @@ const RegisterScreen = () => {
             type='password'
             placeholder='Confirm password'
             value={confirmPassword}
+            name="cfpw"
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Button disabled={isLoading} type='submit' variant='primary'>
+        <Button disabled={isLoading} type='submit' name="demoid" variant='primary'>
           Register
         </Button>
 

@@ -65,7 +65,7 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link to="/" className="btn btn-outline-primary my-3">
         Go Back
       </Link>
 
@@ -160,6 +160,7 @@ const ProductScreen = () => {
                       type="button"
                       disabled={product.countInStock === 0}
                       onClick={addToCartHandler}
+                      id="btn"
                     >
                       Add to Cart
                     </Button>
