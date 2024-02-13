@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: false,
     },
+    resetPasswordOTP: {
+        type: String, // Store OTP as a string
+    },
 }, {
     timestamps: true,
 });

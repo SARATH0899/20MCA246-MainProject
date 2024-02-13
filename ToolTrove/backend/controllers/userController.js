@@ -1,11 +1,13 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
+import bcrypt from 'bcryptjs';
+import nodemailer from 'nodemailer';
 import generateToken from '../utils/generateToken.js';
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
 // @access  Public
-const authUser = asyncHandler(async (req, res) => {  
+const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -183,6 +185,107 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+// Function to generate OTP
+const generateOTP = () => {
+  const digits = '0123456789';
+  let OTP = '';
+  for (let i = 0; i < 6; i++) {
+    OTP += digits[Math.floor(Math.random() * 10)];
+  }
+  return OTP;
+};
+
+// Controller to send reset password OTP
+const sendResetPasswordOTP = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    res.status(400).json({ message: 'User not found' });
+    return;
+  }
+
+  // Generate OTP
+  const OTP = generateOTP();
+
+  // Update user with OTP (you may want to store this OTP in your database)
+  user.resetPasswordOTP = OTP;
+  await user.save();
+
+  // Send OTP to user's email
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'sarathmrtvm@gmail.com', // Enter your email
+      pass: 'ervm qglz sbbe bdyf', // Enter your password
+    },
+  });
+
+  const mailOptions = {
+    from: 'sarathmrtvm@gmail.com', // Enter your email
+    to: email,
+    subject: 'Reset Your Password',
+    text: `Your OTP for password reset is: ${OTP}`,
+  };
+
+  transporter.sendMail(mailOptions, (error) => {
+    if (error) {
+      console.error('Error sending email:', error);
+      res.status(500).json({ message: 'Failed to send OTP. Please try again later.' });
+    } else {
+      res.status(200).json({ message: 'Reset OTP sent to your email.' });
+    }
+  });
+});
+
+// Controller to verify reset password OTP
+const verifyResetPasswordOTP = asyncHandler(async (req, res) => {
+  const { email, otp } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    res.status(400).json({ message: 'User not found' });
+    return;
+  }
+
+  // Check if the provided OTP matches the stored OTP
+  if (user.resetPasswordOTP === otp) {
+    // Clear the OTP after successful verification
+    user.resetPasswordOTP = null;
+    await user.save();
+    res.status(200).json({ message: 'OTP verified successfully' });
+  } else {
+    res.status(400).json({ message: 'Invalid OTP' });
+  }
+});
+
+// @desc    Reset user password
+// @route   PUT /api/users/reset-password1
+// @access  Public
+const resetPassword1 = asyncHandler(async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  try {
+    // Generate salt and hash the new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // Update the user's password
+    const user = await User.findOneAndUpdate({ email }, { password: hashedPassword });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'Password updated successfully' });
+  } catch (error) {
+    console.error('Error updating password:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 export {
   authUser,
   registerUser,
@@ -193,4 +296,7 @@ export {
   deleteUser,
   getUserById,
   updateUser,
+  sendResetPasswordOTP,
+  verifyResetPasswordOTP,
+  resetPassword1,
 };
