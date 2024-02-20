@@ -217,13 +217,13 @@ const sendResetPasswordOTP = asyncHandler(async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'sarathmrtvm@gmail.com', // Enter your email
-      pass: 'ervm qglz sbbe bdyf', // Enter your password
+      user: 'sarathmrtvm@gmail.com', 
+      pass: 'ervm qglz sbbe bdyf', 
     },
   });
 
   const mailOptions = {
-    from: 'sarathmrtvm@gmail.com', // Enter your email
+    from: 'sarathmrtvm@gmail.com', 
     to: email,
     subject: 'Reset Your Password',
     text: `Your OTP for password reset is: ${OTP}`,
