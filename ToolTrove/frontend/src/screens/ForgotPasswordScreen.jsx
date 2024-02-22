@@ -3,7 +3,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState('');
-  const [stage, setStage] = useState(1); // Stage 1: Initial stage, Stage 2: Enter OTP, Stage 3: Enter new password
+  const [stage, setStage] = useState(1); 
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -18,7 +18,7 @@ const ForgotPasswordScreen = () => {
     specialChar: false,
   });
 
-  // Timer to enable the resend OTP button after 60 seconds
+  // Timer to enable the resend OTP button after 90 seconds
   useEffect(() => {
     let interval;
     if (timer > 0) {
@@ -148,7 +148,7 @@ const ForgotPasswordScreen = () => {
                   ></Form.Control>
                 </Form.Group>
 
-                <Button type='submit' variant='primary' className='mt-2 btn-block'>
+                <Button type='submit' variant='info' className='mt-2 btn-block'>
                   Send OTP
                 </Button>
               </Form>
@@ -169,7 +169,7 @@ const ForgotPasswordScreen = () => {
                   ></Form.Control>
                 </Form.Group>
 
-                <Button type='submit' variant='primary' className='mt-2 btn-block'>
+                <Button type='submit' variant='info' className='mt-2 btn-block'>
                   Verify OTP
                 </Button>
                 <p className="text-muted text-center mt-2">
@@ -230,8 +230,8 @@ const ForgotPasswordScreen = () => {
                   </div>
                 </Form.Group>
 
-                <Button type='submit' variant='outline-warning' className='mt-3 btn-block'>
-                  Update Password
+                <Button type='submit' variant='outline-success' className='mt-3 btn-block'>
+                  Reset Password
                 </Button>
               </Form>
               {error && <p className="text-danger">{error}</p>}

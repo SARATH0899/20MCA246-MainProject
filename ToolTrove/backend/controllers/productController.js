@@ -39,6 +39,7 @@ const getProductById = asyncHandler(async (req, res) => {
         throw new Error('Resource not found');
     }
 });
+
 // @desc    Create a product
 // @route   POST /api/products
 // @access  Private/Admin

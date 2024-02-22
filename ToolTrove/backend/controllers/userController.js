@@ -185,7 +185,9 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Function to generate OTP
+// @desc    Function to generate OTP
+// @route   None (helper function)
+// @access  Private
 const generateOTP = () => {
   const digits = '0123456789';
   let OTP = '';
@@ -195,7 +197,9 @@ const generateOTP = () => {
   return OTP;
 };
 
-// Controller to send reset password OTP
+// @desc    Controller to send reset password OTP
+// @route   POST /api/reset-password
+// @access  Public
 const sendResetPasswordOTP = asyncHandler(async (req, res) => {
   const { email } = req.body;
 
@@ -209,7 +213,7 @@ const sendResetPasswordOTP = asyncHandler(async (req, res) => {
   // Generate OTP
   const OTP = generateOTP();
 
-  // Update user with OTP (you may want to store this OTP in your database)
+  // Update user with OTP 
   user.resetPasswordOTP = OTP;
   await user.save();
 
@@ -239,7 +243,9 @@ const sendResetPasswordOTP = asyncHandler(async (req, res) => {
   });
 });
 
-// Controller to verify reset password OTP
+// @desc    Controller to verify reset password OTP
+// @route   POST /api/verify-otp
+// @access  Public
 const verifyResetPasswordOTP = asyncHandler(async (req, res) => {
   const { email, otp } = req.body;
 
@@ -274,11 +280,9 @@ const resetPassword1 = asyncHandler(async (req, res) => {
 
     // Update the user's password
     const user = await User.findOneAndUpdate({ email }, { password: hashedPassword });
-
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
     res.status(200).json({ message: 'Password updated successfully' });
   } catch (error) {
     console.error('Error updating password:', error);
