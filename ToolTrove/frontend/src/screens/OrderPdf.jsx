@@ -4,7 +4,7 @@ import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
-    padding: 20,
+    padding: 50,
     borderWidth: 5,
     borderColor: 'black',
     borderStyle: 'solid', 
@@ -82,7 +82,7 @@ const OrderPDF = ({ order }) => (
           <View style={styles.addressBox}>
             <Text style={styles.addressText}>Billing Address:</Text>
             <Text style={styles.addressText}>{order.user.name}</Text>
-            <Text style={styles.addressText}>{order.user.email}</Text>
+           <h4> <Text style={styles.addressText}>{order.user.email}</Text></h4>
             <Text style={styles.addressText}>
               {order.shippingAddress.address}, {order.shippingAddress.city},{' '}
               {order.shippingAddress.postalCode}, {order.shippingAddress.country}
