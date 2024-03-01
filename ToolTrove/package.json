@@ -15,6 +15,7 @@
   "author": "SARATH",
   "license": "MIT",
   "dependencies": {
+    "@alan-ai/alan-sdk-web": "^1.8.54",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",

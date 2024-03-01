@@ -9,11 +9,13 @@ import Paginate from '../components/Paginate';
 import Meta from '../components/Meta';
 import ProductCarousel from '../components/ProductCarousel';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
+import useAlan from '../hooks/useAlan';
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
 
   const { data, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
+  useAlan()
 
   return (
     <>
