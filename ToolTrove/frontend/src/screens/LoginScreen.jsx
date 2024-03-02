@@ -20,22 +20,26 @@ const LoginScreen = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const { search } = useLocation();
-  const sp = new URLSearchParams(search);
-  const redirect = sp.get('redirect') || '/';
-
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      if (userInfo.isAdmin) {
+        navigate('/admindashboard');
+      } else {
+        navigate('/');
+      }
     }
-  }, [navigate, redirect, userInfo]);
+  }, [navigate, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      navigate(redirect);
+      if (res.isAdmin) {
+        navigate('/admindashboard');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -72,7 +76,7 @@ const LoginScreen = () => {
           <Link to="/forgot_Password">Forgot Password?</Link>
         </div>
 
-        <Button disabled={ isLoading } type='submit' id="testid" variant='primary' className='mt-2'>
+        <Button disabled={isLoading} type='submit' id="testid" variant='primary' className='mt-2'>
           Sign In
         </Button>
 
@@ -82,7 +86,7 @@ const LoginScreen = () => {
       <Row className='py-3'>
         <Col>
           New Customer?{' '}
-          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+          <Link to="/register">
             Register
           </Link>
         </Col>
