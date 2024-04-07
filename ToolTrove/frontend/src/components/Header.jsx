@@ -1,6 +1,6 @@
 import React from 'react';
-import { Badge, Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { Badge, Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
+import { FaShoppingCart, FaUser, FaTruck } from 'react-icons/fa'; // Import FaTruck icon for rental
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,10 @@ const Header = () => {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleGoForRental = () => {
+    window.open('http://localhost:3006/', '_blank'); // Open in a new tab
   };
 
   return (
@@ -74,7 +78,7 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
               )}
-              
+              <Button variant="info" onClick={handleGoForRental}><FaTruck /> Go for Rental</Button> {/* Add button for rental */}
               {/* Admin Links */}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title='Admin' id='adminmenu'>
@@ -97,4 +101,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
