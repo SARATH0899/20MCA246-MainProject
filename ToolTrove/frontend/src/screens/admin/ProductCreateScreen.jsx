@@ -34,7 +34,7 @@ const ProductCreateScreen = () => {
             countInStock,
             description
           };
-          const response = await axios.post("/api/products", productData);
+          const response = await axios.post("https://main-project-95jn.onrender.com/api/products", productData);
           toast.success('Product created successfully');
           navigate('/admin/productlist');
     } catch (err) {
