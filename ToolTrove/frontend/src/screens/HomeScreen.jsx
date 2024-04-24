@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Product from '../components/Product';
@@ -34,6 +34,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+        <Container>
           <Meta title="Welcome to Tools Hub" />
           <h1>Latest Products</h1>
           <Row>
@@ -48,6 +49,7 @@ const HomeScreen = () => {
             page={data.page}
             keyword={keyword ? keyword : ''}
           />
+        </Container>
         </>
       )}
     </>
