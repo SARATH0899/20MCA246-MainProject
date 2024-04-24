@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
-import { FaShoppingCart, FaUser, FaTruck } from 'react-icons/fa'; // Import FaTruck icon for rental
+import { FaShoppingCart, FaUser, FaTruck } from 'react-icons/fa'; 
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,7 @@ import logo from '../assets/logo.png';
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Header = () => {
   };
 
   const handleGoForRental = () => {
-    window.open('http://localhost:3006/', '_blank'); // Open in a new tab
+    window.open('http://localhost:3006/', '_blank'); 
   };
 
   return (
@@ -67,7 +68,13 @@ const Header = () => {
                               <NavDropdown.Item>Profile</NavDropdown.Item>
                             </LinkContainer>
                             <LinkContainer to='/wishlist'>
-                              <NavDropdown.Item>My Favorites</NavDropdown.Item>
+                              <NavDropdown.Item>My Favorites
+                              {wishlistItems.length > 0 && (
+                                  <Badge pill bg='info' style={{ marginLeft: '5px' }}>
+                                    {wishlistItems.length}
+                                  </Badge>
+                                )}
+                              </NavDropdown.Item>
                             </LinkContainer>
                           <NavDropdown.Item onClick={logoutHandler}>
                             Logout
