@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/styles/wishlist.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import {
@@ -47,13 +47,20 @@ const ProductScreen = () => {
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
 
+    useEffect(() => {
+      const favoriteStatus = localStorage.getItem(`favorite_${productId}`);
+      setIsFavorite(favoriteStatus === "true");
+    }, [productId]);
+
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
     navigate("/cart");
   };
 
   const addToWishlistHandler = () => {
-    setIsFavorite(!isFavorite);
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+    localStorage.setItem(`favorite_${productId}`, newFavoriteStatus);
     dispatch(addToWishlist({ ...product, qty }));
     toast.success("Product added to Wishlist");
   }
