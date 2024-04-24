@@ -1,7 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "../assets/styles/wishlist.css";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   Form,
   Row,
@@ -11,18 +10,19 @@ import {
   Card,
   Button,
   ListGroupItem,
-} from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import Rating from '../components/Rating';
-import Loader from '../components/Loader';
-import Meta from '../components/Meta';
-import Message from '../components/Message';
+} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import Rating from "../components/Rating";
+import Loader from "../components/Loader";
+import Meta from "../components/Meta";
+import Message from "../components/Message";
 import {
   useGetproductDetailsQuery,
   useCreateReviewMutation,
-} from '../slices/productsApiSlice';
-import { addToCart } from '../slices/cartSlice';
+} from "../slices/productsApiSlice";
+import { addToCart } from "../slices/cartSlice";
+import { addToWishlist } from "../slices/wishlistSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -32,10 +32,15 @@ const ProductScreen = () => {
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  const { data: product, isLoading, refetch, error } =
-    useGetproductDetailsQuery(productId);
+  const {
+    data: product,
+    isLoading,
+    refetch,
+    error,
+  } = useGetproductDetailsQuery(productId);
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -44,8 +49,14 @@ const ProductScreen = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate('/cart');
+    navigate("/cart");
   };
+
+  const addToWishlistHandler = () => {
+    setIsFavorite(!isFavorite);
+    dispatch(addToWishlist({ ...product, qty }));
+    toast.success("Product added to Wishlist");
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -57,7 +68,7 @@ const ProductScreen = () => {
         comment,
       }).unwrap();
       refetch();
-      toast.success('Review created successfully');
+      toast.success("Review created successfully");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -93,9 +104,7 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>
-                  Price: ₹ {product.price}
-                </ListGroup.Item>
+                <ListGroup.Item>Price: ₹ {product.price}</ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
@@ -118,13 +127,12 @@ const ProductScreen = () => {
                       <Col>
                         <strong
                           style={{
-                            color:
-                              product.countInStock > 0 ? 'green' : 'red',
+                            color: product.countInStock > 0 ? "green" : "red",
                           }}
                         >
                           {product.countInStock > 0
-                            ? 'In Stock'
-                            : 'Out of Stock'}
+                            ? "In Stock"
+                            : "Out of Stock"}
                         </strong>
                       </Col>
                     </Row>
@@ -141,7 +149,7 @@ const ProductScreen = () => {
                           >
                             -
                           </Button>
-                          <span style={{ margin: '0 5px' }}>{qty}</span>
+                          <span style={{ margin: "0 5px" }}>{qty}</span>
                           <Button
                             variant="light"
                             onClick={() => setQty(qty + 1)}
@@ -164,6 +172,36 @@ const ProductScreen = () => {
                     >
                       Add to Cart
                     </Button>
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    <input
+                      value="favorite-button"
+                      name="favorite-checkbox"
+                      id="favorite"
+                      checked={isFavorite}
+                      type="checkbox"
+                      onClick={addToWishlistHandler}
+                    />
+                    <label className="wishlistContainer" htmlFor="favorite">
+                      <svg
+                        className="feather feather-heart"
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="2"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        height="24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                      </svg>
+                      <div className="action">
+                        <span className="option-1">Add to Favorites</span>
+                        <span className="option-2">Added to Favorites</span>
+                      </div>
+                    </label>
                   </ListGroupItem>
                 </ListGroup>
               </Card>
