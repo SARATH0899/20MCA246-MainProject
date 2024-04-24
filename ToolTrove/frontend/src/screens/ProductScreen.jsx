@@ -22,7 +22,7 @@ import {
   useCreateReviewMutation,
 } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
-import { addToWishlist } from "../slices/wishlistSlice";
+import { addToWishlist, removeFromWishlist } from "../slices/wishlistSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -47,10 +47,10 @@ const ProductScreen = () => {
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
 
-    useEffect(() => {
-      const favoriteStatus = localStorage.getItem(`favorite_${productId}`);
-      setIsFavorite(favoriteStatus === "true");
-    }, [productId]);
+  useEffect(() => {
+    const favoriteStatus = localStorage.getItem(`favorite_${productId}`);
+    setIsFavorite(favoriteStatus === "true");
+  }, [productId]);
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
@@ -58,12 +58,18 @@ const ProductScreen = () => {
   };
 
   const addToWishlistHandler = () => {
-    const newFavoriteStatus = !isFavorite;
-    setIsFavorite(newFavoriteStatus);
-    localStorage.setItem(`favorite_${productId}`, newFavoriteStatus);
-    dispatch(addToWishlist({ ...product, qty }));
-    toast.success("Product added to Wishlist");
-  }
+    if (!isFavorite) {
+      dispatch(addToWishlist({ ...product, qty }));
+      localStorage.setItem(`favorite_${productId}`, true);
+      setIsFavorite(true);
+      toast.info("Product added to Wishlist");
+    } else {
+      dispatch(removeFromWishlist(productId));
+      localStorage.removeItem(`favorite_${productId}`);
+      setIsFavorite(false);
+      toast.warning("Product removed from Wishlist");
+    }
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -205,8 +211,8 @@ const ProductScreen = () => {
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                       </svg>
                       <div className="action">
-                        <span className="option-1">Add to Favorites</span>
-                        <span className="option-2">Added to Favorites</span>
+                        <span className="option-1">Add to Wishlist</span>
+                        <span className="option-2">Added to Wishlist</span>
                       </div>
                     </label>
                   </ListGroupItem>
