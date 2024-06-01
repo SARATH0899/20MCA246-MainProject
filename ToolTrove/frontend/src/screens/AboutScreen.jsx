@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
+import OurDealers from "../components/OurDealers";
 import tools_bg from "../assets/images/tools_bg.jpg";
 import cutter from "../assets/images/cutter.jpg";
 import tools_banner from "../assets/images/tools_banner.png";
@@ -120,6 +121,15 @@ const AboutScreen = () => {
           </Col>
         </Row>
       </Container>
+      <Container>
+          <Row>
+            <Col lg="12" className="mb-5 text-center">
+              <h6 className="section__subtitle" style={{ color: "red" }}>Experts</h6>
+              <h2 className="section__title" style={{ color: "darkgreen" }}>Our Members</h2>
+            </Col>
+            <OurDealers />
+          </Row>
+        </Container>
     </div>
   );
 };
