@@ -125,7 +125,7 @@ const AboutScreen = () => {
           <Row>
             <Col lg="12" className="mb-5 text-center">
               <h6 className="section__subtitle" style={{ color: "red" }}>Experts</h6>
-              <h2 className="section__title" style={{ color: "darkgreen" }}>Our Members</h2>
+              <h2 className="section__title" style={{ color: "darkgreen" }}>Our Dealers</h2>
             </Col>
             <OurDealers />
           </Row>

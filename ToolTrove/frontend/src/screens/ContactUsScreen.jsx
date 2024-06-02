@@ -1,8 +1,33 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import tools_bg from "../assets/images/tools_bg.jpg";
 
 const ContactScreen = () => {
   return (
+  <div className="contact-page">
+      <Container
+        fluid
+        className="common-section text-white text-center py-5 position-relative"
+        style={{
+          backgroundImage: `url(${tools_bg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div 
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 1,
+          }}
+        ></div>
+        <h1 style={{ position: 'relative', zIndex: 2 }}>Connect to Us</h1>
+      </Container>
     <Container>
       <Row className="justify-content-md-center">
         <Col md={8}>
@@ -34,6 +59,7 @@ const ContactScreen = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 
